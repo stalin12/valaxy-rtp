@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo '<--------------- Building --------------->'
                 sh 'printenv'
-                
+                sh 'mvn clean deploy -Dmaven.test.skip=true'
                 echo '<------------- Build completed --------------->'
             }
         }
