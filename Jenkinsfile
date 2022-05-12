@@ -4,7 +4,7 @@ def app
 pipeline {
     agent {
        node {
-         label "devops"
+         label "valaxy"
       }
     }
     stages {
