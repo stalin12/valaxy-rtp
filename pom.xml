@@ -8,7 +8,7 @@
 		<version>2.2.0.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.stalin</groupId>
+	<groupId>com.samboo</groupId>
 	<artifactId>demo-workshop</artifactId>
 	<version>1.0.1</version>
 	<name>demo-workshop</name>
