@@ -38,7 +38,7 @@ pipeline {
                             error "Pipeline failed due to quality gate failures: ${qg.status}"
                         }
                     }  
-                  echo '<--------------- Sonar Gate Analysis Ends --------------->'
+                  echo '<--------------- Sonar Gate Analysis Ends  --------------->'
                 }
             }
         }
