@@ -1,4 +1,4 @@
-def imageName = 'stalin.jfrog.io/default-docker-local/twittertrend'
+def imageName = 'stalin.jfrog.io/default-docker-local/valaxy-rtp'
 def registry  = 'https://stalin.jfrog.io'
 def app
 pipeline {
@@ -48,6 +48,15 @@ pipeline {
                   echo '<--------------- Sonar Gate Analysis Ends  --------------->'
                 }
             }
+        }
+        stage("Docker Build") {
+          steps {
+            script {
+               echo '<--------------- Docker Build Started --------------->'
+               app = docker.build(imageName)
+               echo '<--------------- Docker Build Ends --------------->'
+            }
+          }
         }
     }
  }
