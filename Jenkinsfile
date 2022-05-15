@@ -83,7 +83,17 @@ pipeline {
             }
           }
         }
-
+        stage("Docker Publish") {
+          steps {
+            script {
+               echo '<--------------- Docker Publish Started --------------->'
+               docker.withRegistry(registry, 'artifactorycredentialid'){
+                 docker.image(imageName).push(env.BUILD_ID)
+               }
+               echo '<--------------- Docker Publish Ends --------------->'
+            }
+          }
+        }
 
     }
  }
