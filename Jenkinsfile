@@ -1,4 +1,4 @@
-def imageName = 'stalin.jfrog.io/default-docker-local/valaxy-rtp'
+def imageName = 'stalin.jfrog.io/default-docker-local/valaxy-rtp:1.0.0'
 def registry  = 'https://stalin.jfrog.io'
 def app
 pipeline {
@@ -91,6 +91,16 @@ pipeline {
                  docker.image(imageName).push(env.BUILD_ID)
                }
                echo '<--------------- Docker Publish Ends --------------->'
+            }
+          }
+        }
+
+        stage(" Deploy ") {
+          steps {
+            script {
+               echo '<--------------- Deploy Started --------------->'
+               sh './deploy.sh'
+               echo '<--------------- Deploy Ends --------------->'
             }
           }
         }
