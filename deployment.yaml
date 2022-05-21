@@ -18,25 +18,16 @@ spec:
       containers:
       - name:  valaxy-rtp
         image: stalin.jfrog.io/default-docker-local/valaxy-rtp:1.0.2
-        livenessProbe:
-          httpGet:
-            path: /trends/?placeid=2295420&count=5
-            port: 8000
-            httpHeaders:
-              - name: Custom-Header
-                value: Awesome
-          initialDelaySeconds: 3
-          periodSeconds: 3
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
         env:
         - name: CONSUMER_KEY
-          value: HpwdfLFZLON0mT8BLWSSYfTxs
+          value: "HpwdfLFZLON0mT8BLWSSYfTxs"
         - name: CONSUMER_SECRET
-          value: 0FKwKj0GuPMz50dYTYQ3EQxqHfSyNsxipyfPGgXemMHkfWuR3G
+          value: "0FKwKj0GuPMz50dYTYQ3EQxqHfSyNsxipyfPGgXemMHkfWuR3G"
         - name: ACCESS_TOKEN
-          value: 19703354-imHt92QNIdQLkRiV5qQXQw5CLoJmZM5stZkJ05796
+          value: "19703354-imHt92QNIdQLkRiV5qQXQw5CLoJmZM5stZkJ05796"
         - name: ACCESS_TOKEN_SECRET
-          value: G1yk87c6rXTd6B4kcKzJlfdsQyKlp0n8YYamya6D2M1eY
+          value: "G1yk87c6rXTd6B4kcKzJlfdsQyKlp0n8YYamya6D2M1eY"
 

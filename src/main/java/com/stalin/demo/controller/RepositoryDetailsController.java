@@ -52,7 +52,6 @@ public class RepositoryDetailsController {
 		Twitter twitter = tf.getInstance();
 		System.out.println("Twitter object "+twitter);
 		Map<String, String> trendDetails = new HashMap<String, String>();
-/*
 		try {
 			Trends trends = twitter.getPlaceTrends(Integer.parseInt(trendPlace));
 			System.out.println("After API call");
@@ -72,8 +71,6 @@ public class RepositoryDetailsController {
 			trendDetails.put("test", "MyTweet");
             System.out.println("Exception "+e.getMessage());
 		}
-*/
-		trendDetails.put("test", "MyTweet");
 		return trendDetails;
 	}
 
