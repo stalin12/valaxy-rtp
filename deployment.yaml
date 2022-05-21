@@ -20,7 +20,7 @@ spec:
         image: stalin.jfrog.io/default-docker-local/valaxy-rtp:1.0.2
         livenessProbe:
           httpGet:
-            path: /trends
+            path: /trends/?placeid=2295420&count=5
             port: 8000
             httpHeaders:
               - name: Custom-Header
