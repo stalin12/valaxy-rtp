@@ -36,11 +36,10 @@ public class RepositoryDetailsController {
 
 	@GetMapping("/trends")
 	public Map<String, String> getTwitterTrends(@RequestParam("placeid") String trendPlace, @RequestParam("count") String trendCount) {
-		String consumerKey = env.getProperty("CONSUMER_KEY");
-                System.out.println("This is for sonar testing");
-		String consumerSecret = env.getProperty("CONSUMER_SECRET");
-		String accessToken = env.getProperty("ACCESS_TOKEN");
-		String accessTokenSecret = env.getProperty("ACCESS_TOKEN_SECRET");
+		String consumerKey = "HpwdfLFZLON0mT8BLWSSYfTxs";// env.getProperty("CONSUMER_KEY");
+		String consumerSecret = "0FKwKj0GuPMz50dYTYQ3EQxqHfSyNsxipyfPGgXemMHkfWuR3G";// env.getProperty("CONSUMER_SECRET");
+		String accessToken = "19703354-imHt92QNIdQLkRiV5qQXQw5CLoJmZM5stZkJ05796";//env.getProperty("ACCESS_TOKEN");
+		String accessTokenSecret = "G1yk87c6rXTd6B4kcKzJlfdsQyKlp0n8YYamya6D2M1eY";//env.getProperty("ACCESS_TOKEN_SECRET");
 		System.out.println("consumerKey "+consumerKey+" consumerSecret "+consumerSecret+" accessToken "+accessToken+" accessTokenSecret "+accessTokenSecret);		
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
@@ -55,6 +54,7 @@ public class RepositoryDetailsController {
 		Map<String, String> trendDetails = new HashMap<String, String>();
 		try {
 			Trends trends = twitter.getPlaceTrends(Integer.parseInt(trendPlace));
+			System.out.println("After API call");
 			int count = 0;
 			for (Trend trend : trends.getTrends()) {
 				if (count < Integer.parseInt(trendCount)) {
@@ -63,9 +63,9 @@ public class RepositoryDetailsController {
 				}
 			}
 		} catch (TwitterException e) {
-            trendDetails.put("Error", e.toString());
+            trendDetails.put("Twitter Exception", e.getMessage());
 		}catch (Exception e) {
-            trendDetails.put("Error", e.toString());
+            trendDetails.put("Exception", e.e.getMessage());
 		}
 
 		return trendDetails;
