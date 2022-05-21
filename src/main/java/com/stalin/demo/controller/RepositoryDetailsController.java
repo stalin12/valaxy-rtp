@@ -65,7 +65,7 @@ public class RepositoryDetailsController {
 		} catch (TwitterException e) {
             trendDetails.put("Twitter Exception", e.getMessage());
 		}catch (Exception e) {
-            trendDetails.put("Exception", e.e.getMessage());
+            trendDetails.put("Exception", e.getMessage());
 		}
 
 		return trendDetails;
