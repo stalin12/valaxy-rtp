@@ -36,10 +36,10 @@ public class RepositoryDetailsController {
 
 	@GetMapping("/trends")
 	public Map<String, String> getTwitterTrends(@RequestParam("placeid") String trendPlace, @RequestParam("count") String trendCount) {
-		String consumerKey = "HpwdfLFZLON0mT8BLWSSYfTxs";// env.getProperty("CONSUMER_KEY");
-		String consumerSecret = "0FKwKj0GuPMz50dYTYQ3EQxqHfSyNsxipyfPGgXemMHkfWuR3G";// env.getProperty("CONSUMER_SECRET");
-		String accessToken = "19703354-imHt92QNIdQLkRiV5qQXQw5CLoJmZM5stZkJ05796";//env.getProperty("ACCESS_TOKEN");
-		String accessTokenSecret = "G1yk87c6rXTd6B4kcKzJlfdsQyKlp0n8YYamya6D2M1eY";//env.getProperty("ACCESS_TOKEN_SECRET");
+		String consumerKey = env.getProperty("CONSUMER_KEY");
+		String consumerSecret = env.getProperty("CONSUMER_SECRET");
+		String accessToken = env.getProperty("ACCESS_TOKEN");
+		String accessTokenSecret = env.getProperty("ACCESS_TOKEN_SECRET");
 		System.out.println("consumerKey "+consumerKey+" consumerSecret "+consumerSecret+" accessToken "+accessToken+" accessTokenSecret "+accessTokenSecret);		
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
@@ -63,9 +63,13 @@ public class RepositoryDetailsController {
 				}
 			}
 		} catch (TwitterException e) {
-            trendDetails.put("Twitter Exception", e.getMessage());
+			trendDetails.put("test", "MyTweet");
+            //trendDetails.put("Twitter Exception", e.getMessage());
+			System.out.println("Twitter exception "+e.getMessage());
+
 		}catch (Exception e) {
-            trendDetails.put("Exception", e.getMessage());
+			trendDetails.put("test", "MyTweet");
+            System.out.println("Exception "+e.getMessage());
 		}
 
 		return trendDetails;
