@@ -4,7 +4,7 @@ metadata:
   name: valaxy-rtp
   namespace: valaxy
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app:  valaxy-rtp
