@@ -17,7 +17,7 @@ spec:
       - name: cred
       containers:
       - name:  valaxy-rtp
-        image: stalin.jfrog.io/default-docker-local/valaxy-rtp:1.0.2
+        image: stalin.jfrog.io/default-docker-local/valaxy-rtp:1.0.3
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
