@@ -28,9 +28,11 @@ pipeline {
         
         stage("Docker Build") {
             steps {
+                script {
                   echo '<--------------- Docker Build started --------------->'
-                  docker.build(imageName)
-                  echo '<--------------- Docker Build stopped --------------->'               
+                  app = docker.build(imageName)
+                  echo '<--------------- Docker Build stopped --------------->'   
+                }    
             }   
         }
     }
