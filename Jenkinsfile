@@ -1,6 +1,6 @@
-def imageName = 'stalin.jfrog.io/default-docker-local/valaxy-rtp'
-def registry  = 'https://stalin.jfrog.io'
-def version   = '1.0.3'
+def imageName = 'stalinrtp.jfrog.io/valaxy-docker/valaxy-rtp'
+def registry  = 'https://stalinrtp.jfrog.io'
+def version   = '1.0.0'
 def app
 pipeline {
     agent {
@@ -60,6 +60,17 @@ pipeline {
           }
         }
 
+        stage("Docker Publish") {
+          steps {
+            script {
+               echo '<--------------- Docker Publish Started --------------->'
+               docker.withRegistry(registry, 'artifactorycredentialid'){
+               docker.image(imageName).push(version)
+             }
+               echo '<--------------- Docker Publish Ends --------------->'
+            }
+          }
+        }
 
     }
  }
