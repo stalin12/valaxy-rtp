@@ -60,51 +60,6 @@ pipeline {
           }
         }
 
-        stage("Jar Publish") {
-          steps {
-            script {
-              echo '<--------------- Jar Publish Started --------------->'
-                def server = Artifactory.newServer url:registry+"/artifactory" ,  credentialsId:"artifactorycredentialid"
-                 def properties = "buildid=${env.BUILD_ID},commitid=${GIT_COMMIT}";
-                 def uploadSpec = """{
-                      "files": [
-                        {
-                          "pattern": "jarstaging/(*)",
-                          "target": "default-maven-local/{1}",
-                          "flat": "false",
-                          "props" : "${properties}",
-                          "exclusions": [ "*.sha1", "*.md5"]
-                        }
-                     ]
-                 }"""
-                 def buildInfo = server.upload(uploadSpec)
-                 buildInfo.env.collect()
-                 server.publishBuildInfo(buildInfo)
-              echo '<--------------- Jar Publish Ended --------------->'
-            }
-          }
-        }
-        stage("Docker Publish") {
-          steps {
-            script {
-               echo '<--------------- Docker Publish Started --------------->'
-               docker.withRegistry(registry, 'artifactorycredentialid'){
-                 docker.image(imageName).push(version)
-               }
-               echo '<--------------- Docker Publish Ends --------------->'
-            }
-          }
-        }
-
-        stage(" Deploy ") {
-          steps {
-            script {
-               echo '<--------------- Deploy Started --------------->'
-               sh './deploy.sh'
-               echo '<--------------- Deploy Ends --------------->'
-            }
-          }
-        }
 
     }
  }
