@@ -49,6 +49,7 @@ public class RepositoryDetailsController {
 				.setOAuthAccessTokenSecret(accessTokenSecret);
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		System.out.println("Twitter Factory "+tf);
+		System.out.println("Code testing purpose ");
 		Twitter twitter = tf.getInstance();
 		System.out.println("Twitter object "+twitter);
 		Map<String, String> trendDetails = new HashMap<String, String>();
