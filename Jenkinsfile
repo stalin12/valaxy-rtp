@@ -5,7 +5,7 @@ def app
 pipeline {
     agent {
        node {
-         label "valaxy"
+         label "rtp2"
       }
     }
     stages {
