@@ -1,6 +1,6 @@
 def imageName = 'stalinrtp.jfrog.io/valaxy-docker/valaxy-rtp'
 def registry  = 'https://stalinrtp.jfrog.io'
-def version   = '1.0.0'
+def version   = '1.0.1'
 def app
 pipeline {
     agent {
@@ -63,5 +63,31 @@ pipeline {
             }
           }
         }
+        
+        stage("Jar Publish") {
+            steps {
+                script {
+                        echo '<--------------- Jar Publish Started --------------->'
+                         def server = Artifactory.newServer url:registry+"/artifactory" ,  credentialsId:"artifactorycredentialid"
+                         def properties = "buildid=${env.BUILD_ID},commitid=${GIT_COMMIT}";
+                         def uploadSpec = """{
+                              "files": [
+                                {
+                                  "pattern": "jarstaging/(*)",
+                                  "target": "valaxy-libs-release/{1}",
+                                  "flat": "false",
+                                  "props" : "${properties}",
+                                  "exclusions": [ "*.sha1", "*.md5"]
+                                }
+                             ]
+                         }"""
+                         def buildInfo = server.upload(uploadSpec)
+                         buildInfo.env.collect()
+                         server.publishBuildInfo(buildInfo)
+                         echo '<--------------- Jar Publish Ended --------------->'  
+                
+                }
+            }   
+        }    
     }
  }
