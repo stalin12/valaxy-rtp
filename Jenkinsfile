@@ -94,7 +94,9 @@ pipeline {
             steps {
                 script {
                    echo '<--------------- Docker Publish Started --------------->'  
-
+                    docker.withRegistry(registry, 'dockercredentialid'){
+                        app.push()
+                    }    
                    echo '<--------------- Docker Publish Ended --------------->'  
                 }
             }
