@@ -92,11 +92,9 @@ pipeline {
         
         stage (" Docker Publish "){
             steps {
-                
                 script {
                    echo '<--------------- Docker Publish Started --------------->'  
-                   docker.withRegistry(registry,'dockercredentialid')
-                   docker.image(imageName).push(version)
+
                    echo '<--------------- Docker Publish Ended --------------->'  
                 }
             }
