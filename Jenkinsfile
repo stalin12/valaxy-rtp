@@ -105,7 +105,6 @@ pipeline {
          stage(" Deploy ") {
           steps {
             script {
-               input: "Proceed or not"
                echo '<--------------- Deploy Started --------------->'
                sh './deploy.sh'
                echo '<--------------- Deploy Ends --------------->'
