@@ -28,11 +28,12 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn clean deploy
+      run: mvn clean deploy -Dmaven.skip.test=true
   deploy:
      runs-on: ubuntu-latest
      steps:
      - name: Doing the Deployment
+       run: mvn clean deploy
   
 
 
