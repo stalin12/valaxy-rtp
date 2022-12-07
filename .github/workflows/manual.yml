@@ -29,7 +29,7 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
   hello:
-    runs-on: self-hosted
+    runs-on: myrunner
     needs: greet
     steps:
     - name: Hello World
