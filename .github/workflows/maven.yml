@@ -17,7 +17,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: stalin-runner
 
     steps:
     - uses: actions/checkout@v3
@@ -30,7 +30,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean deploy -Dmaven.skip.test=true
   deploy:
-     runs-on: ubuntu-latest
+     runs-on: stalin-runner
      steps:
      - uses: actions/checkout@v3
      - name: Set up JDK 11
