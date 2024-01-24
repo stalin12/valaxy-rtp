@@ -8,6 +8,9 @@ pipeline {
          label "agent2"
       }
     }
+triggers {
+    pollSCM('') // Enabling being build on Push
+  }
     stages {
         stage('Build') {
             steps {
