@@ -5,7 +5,7 @@ def app
 pipeline {
     agent {
        node {
-         label "linux"
+         label "agent2"
       }
     }
     stages {
